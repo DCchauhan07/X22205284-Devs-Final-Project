@@ -18,87 +18,25 @@
         </form>
         
         <h3 class="mt-6 mb-3 text-xl uppercase">Categories</h3>
-        
+
         <ul class="space-y-2">
-            <li><a href="{% url 'shop' %}" class="{% if category.slug == active_category %}text-black-500{% else %}text-purple-500{% endif %}">All categories</a></li>
+            <li>
+                <a href="{% url 'shop' %}" class="{% if not active_category %}text-black-500{% else %}text-purple-500{% endif %}">All categories</a>
+            </li>
             {% for category in categories %}
-                <li><a href="{% url 'shop' %}?category={{ category.slug }}" class="{% if not active_category %}text-purple-500{% else %}text-purple-500{% endif %}">{{ category.name }}</a></li>
+                <li>
+                    <a href="{% url 'shop' %}?category={{ category.slug }}" class="{% if category.slug == active_category %}text-black-500{% else %}text-purple-500{% endif %}">
+                        {{ category.name }}
+                    </a>
+                </li>
             {% endfor %}
         </ul>
+
     </div>
     
     <div class="products w-full lg:w-3/4 -mt-4 flex items-center flex-wrap">
         {% for product in products %}
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6">
-            <a href="#">
-                <img class="rounded-xl hover:shadow-lg" src="https://hips.hearstapps.com/hmg-prod/images/best-sofa-in-a-box-6565197e8cc12.jpg">
-            </a>
-            
-            <div class="pt-3 flex items-center justify-between">
-                <a href="#">{{ product.name }}</a>
-                
-                <a href="#" class="text-black-500 hover:text-black-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                    </svg> 
-                </a>
-            </div>
-            
-            <p class="pt-1  text-black-700">€9.99</p>
-        </div>
+            {% include 'product/partials/product_list_item.html' %}
         {% endfor %}
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6">
-            <a href="#">
-                <img class="rounded-xl hover:shadow-lg" src="https://img.freepik.com/free-photo/mid-century-modern-living-room-interior-design-with-monstera-tree_53876-129804.jpg">
-            </a>
-            
-            <div class="pt-3 flex items-center justify-between">
-                <a href="#">Product Name</a>
-                
-                <a href="#" class="text-black-500 hover:text-black-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                    </svg> 
-                </a>
-            </div>
-            
-            <p class="pt-1  text-black-700">€11.99</p>
-        </div>
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6">
-            <a href="#">
-                <img class="rounded-xl hover:shadow-lg" src="https://www.luceyfurnishings.ie/uploads/mkP3JBA5/753x0_629x0/shutterstock_289196939_285_95_631.jpg">
-            </a>
-            
-            <div class="pt-3 flex items-center justify-between">
-                <a href="#">Product Name</a>
-                
-                <a href="#" class="text-black-500 hover:text-black-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                    </svg> 
-                </a>
-            </div>
-            
-            <p class="pt-1  text-black-700">€30.00</p>
-        </div>
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6">
-            <a href="#">
-                <img class="rounded-xl hover:shadow-lg" src="https://flanagans.ie/wp-content/uploads/2022/08/How-to-Buy-Furniture1200x630-1024x545.jpg">
-            </a>
-            
-            <div class="pt-3 flex items-center justify-between">
-                <a href="#">Product Name</a>
-                
-                <a href="#" class="text-black-500 hover:text-black-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                    </svg> 
-                </a>
-            </div>
-            
-            <p class="pt-1  text-black-700">€20.99</p>
-        </div>
     </div>
-    
-</div>
 {% endblock %}
