@@ -1,4 +1,7 @@
 from django.db import models
+from PIL  import Image
+from django.core.files import File
+from io import BytesIO
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -16,6 +19,8 @@ class Product(models.Model):
     slug = models.SlugField()
     description = models.TextField(blank=True, null=True)
     price = models.IntegerField()
+    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
@@ -26,3 +31,29 @@ class Product(models.Model):
 
     def get_display_price(self):
         return f"€ {self.price / 100}"
+
+    
+    def get_thumbnail(self):
+        if self.thumbnail:
+            return self.thumbnail.url
+        else:
+            if self.image:
+                self.thumbnail = self.make_thumbnail(self.image)
+                self.save()
+                
+                return self.thumbnail.url
+            else:
+                return 'https://via.placeholder.com/240x240x.jpg'
+                
+    def make_thumbnail(self, image, size=(300, 300)):
+        img = Image.open(image)
+        img = img.convert('RGB')  
+        img.thumbnail(size)
+    
+        thumb_io = BytesIO()  
+        img.save(thumb_io, 'JPEG', quality=85)
+        thumb_io.seek(0)  
+
+        thumbnail = File(thumb_io, name=image.name)
+    
+        return thumbnail
