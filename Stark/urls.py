@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf import settings
+from django.contrib.auth import views
 from django.conf.urls.static import static
 
-from cart.views import add_to_cart
+from cart.views import add_to_cart, cart, checkout
 from product.views import product
-from core.views import frontpage, shop, signup, login
+from core.views import frontpage, shop, signup
 
 urlpatterns = [
     path('', frontpage, name='frontpage'),
@@ -28,6 +29,9 @@ urlpatterns = [
     path('add_to_cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
     path('shop/<slug:slug>/', product, name='product'),
     path('admin/', admin.site.urls),
+    path('cart/', cart, name='cart'),
+    path('cart/checkout', checkout, name='checkout'),
     path('signup/', signup, name='signup'),
-    path('login/', login, name='login'),
+    path('logout/', views.LogoutView.as_view(), name='logout'),
+    path('login/', views.LoginView.as_view(template_name='core/login.html'), name='login')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
