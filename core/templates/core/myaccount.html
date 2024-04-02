@@ -1,0 +1,98 @@
+{% extends 'core/base.html' %}
+
+{% block title %}My Account{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto p-6">
+    <h1 class="mb-5 text-3xl">My Account</h1>
+    
+    <div class="flex flex-col">
+        <div class="mb-4">
+            <strong>Name:</strong> {{ request.user.get_full_name }}<br>
+        </div>
+        <div class="mb-4">
+            <strong>Username:</strong> {{ request.user.username }}<br>
+        </div>
+        <div class="mb-4">
+            <strong>Email:</strong> {{ request.user.email }}<br>
+            
+            <a href="{% url 'edit_myaccount' %}" class="inline-block mt-4 py-4 px-6 rounded-xl text-white bg-red-800">Edit</a>
+        </div>
+        
+        <hr>
+
+        <h2 class="mt-6 mb-4 text-xl">My Orders</h2> 
+
+        <div class="w-full mb-6">
+            <div class="bg-gray-100 rounded-xl p-6">
+                <a href="#" class="block mb-2">Order id: 1</a> 
+                
+                <div class="flex justify-between items-center mb-4">
+                    <span>Date: January 1, 2024</span>
+                    <span>Total: € 199.99</span>
+                </div>
+                
+                <div class="product flex items-center">
+                    <a href="#" class="w-1/4">
+                        <img class="hover:shadow-lg rounded-xl" src="1.jpg" alt="Product Image">
+                    </a>
+                    
+                    <div class="w-3/4 pl-6">
+                        <div class="flex justify-between items-center"> 
+                            <a href="#" class="text-lg">Product Name</a>
+                            
+                        </div>
+                        
+                        <hr class="my-2"> 
+                        
+                        <div class="mt-2"> 
+                            <p>Quantity: 1</p>
+                            <p class="text-right">Price: € 9.99</p> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product flex items-center mt-4">
+                    <a href="#" class="w-1/4">
+                        <img class="hover:shadow-lg rounded-xl" src="2.jpg" alt="Product Image">
+                    </a>
+                    
+                    <div class="w-3/4 pl-6">
+                        <div class="flex justify-between items-center"> 
+                            <a href="#" class="text-lg">Second Product Name</a>
+                            
+                        </div>
+                        
+                        <hr class="my-2"> 
+                        
+                        <div class="mt-2"> 
+                            <p>Quantity: 1</p>
+                            <p class="text-right">Price: € 39.98</p> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product flex items-center mt-4">
+                    <a href="#" class="w-1/4">
+                        <img class="hover:shadow-lg rounded-xl" src="3.jpg" alt="Product Image">
+                    </a>
+                    
+                    <div class="w-3/4 pl-6">
+                        <div class="flex justify-between items-center"> 
+                            <a href="#" class="text-lg">Third Product Name</a>
+                            
+                        </div>
+                        
+                        <hr class="my-2"> 
+                        
+                        <div class="mt-2"> 
+                            <p>Quantity: 1</p>
+                            <p class="text-right">Price: € 29.99</p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
