@@ -8,26 +8,7 @@
         <div class="w-full lg:w-3/4 lg:pr-6">
             <div class="product mb-4">
                 {% for item in cart %}
-                    <div class="flex items-start">
-                        <a href="#" class="w-1/4 mr-4">
-                            <img class="hover:shadow-lg rounded-xl" src="{{ item.product.get_thumbnail }}">
-                        </a>  
-    
-                        <div class="w-3/4">
-                            <div class="flex justify-between items-center mb-1">
-                                <a href="#" class="text-lg">{{ item.product.name }}</a>
-                                <span class="text-gray-400">€{{ item.total_price }}</span>
-                            </div>
-    
-                            <hr class="mb-2">
-    
-                            <div class="quantity flex items-center space-x-4">
-                                <a href="#" class="p-3 bg-gray-100">-</a>
-                                <span>{{ item.quantity }}</span>
-                                <a href="#" class="p-3 bg-gray-100">+</a>
-                            </div>
-                        </div>
-                    </div>
+                    {% include 'cart/partials/cart_item.html' %}
                 {% endfor %}
             </div>
         </div>
