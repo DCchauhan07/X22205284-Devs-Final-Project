@@ -3,34 +3,18 @@ env:
   secrets-manager:
     LOGIN: devs/stark-x22205284:sonartoken
     HOST: devs/stark-x22205284:HOST
-    Organization: devs/stark-x22205284:Organization
+    Organization: xdevs/stark-x22205284:Organization
     Project: devs/stark-x22205284:Project
- 
+
 phases:
-  install:
-    runtime-versions:
-      python: 3.9
- 
   pre_build:
     commands:
-      - apt-get update
-      - apt-get install -y python3-pip jq
-      - pip3 install --upgrade pip
       - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
-      - unzip sonar-scanner-cli-5.0.1.3006-linux.zip
+      - unzip ./sonar-scanner-cli-5.0.1.3006-linux.zip
       - export PATH=$PATH:/sonar-scanner-5.0.1.3006-linux/bin/
- 
   build:
     commands:
-      - sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner
-          -Dsonar.login=$LOGIN 
-          -Dsonar.host.url=$HOST 
-          -Dsonar.projectKey=$Project 
-          -Dsonar.organization=$Organization 
-          -Dsonar.python.coverage.reportPaths=coverage.xml
-      - sleep 5
-      - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project > result.json
-      - cat result.json
-      - if [ $(jq -r '.projectStatus.status' result.json) = ERROR ] ; then $CODEBUILD_BUILD_SUCCEEDING -eq 0; fi # Exit with error code 1 based on quality gate status
-
-
+    - sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
+    - curl -u $LOGIN https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project > result.json
+    - cat result.json
+    - if [ "$(jq -r '.projectStatus.status' result.json)" = "ERROR" ]; then $CODEBUILD_BUILD_SUCCEEDING -eq 0; fi
