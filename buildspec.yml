@@ -15,7 +15,7 @@ phases:
       - python --version
       - export PYTHONPATH=.
       - pylint $CODEBUILD_SRC_DIR/*.py
-      - pylint *.py Stark/*.py
+      - pylint $CODEBUILD_SRC_DIR/Stark/*.py
   post_build:
     commands:
       - echo "Build completed successfully!"
