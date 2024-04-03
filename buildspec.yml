@@ -5,20 +5,15 @@ phases:
     runtime-versions:
       python: 3.11
     commands:
-      - echo "Installing dependencies..."
       - pip install --upgrade pip
-      - pip install -r requirements.txt
-      - pip install pylint
-  build:
+      - pip install -r requirements.txt pylint
+
+  pre_build:
     commands:
-      - echo "Building the project..."
       - python --version
-      - export PYTHONPATH=.
-      - pylint *.py Stark/*.py
-  post_build:
-    commands:
-      - echo "Build completed successfully!"
- 
+      - pylint $CODEBUILD_SRC_DIR/*.py
+      - pylint $CODEBUILD_SRC_DIR/Stark/*.py
+
 artifacts:
   files:
     - '**/*'
