@@ -1,7 +1,8 @@
+"""Doctype"""
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
-from django.contrib.auth import views
+from django.contrib.auth import views # pylint: disable=unused-import
 from django.conf.urls.static import static
 
 urlpatterns = [

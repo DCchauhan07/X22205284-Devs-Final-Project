@@ -1,3 +1,6 @@
+"""
+This module serves as the entry point for the Django project.
+"""
 #!/usr/bin/env python
 import os
 import sys
