@@ -3,7 +3,7 @@ env:
   secrets-manager:
     LOGIN: devs/stark-x22205284:sonartoken
     HOST: devs/stark-x22205284:HOST
-    Organization: xdevs/stark-x22205284:Organization
+    Organization: devs/stark-x22205284:Organization
     Project: devs/stark-x22205284:Project
 
 phases:
