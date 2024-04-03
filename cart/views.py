@@ -3,7 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .cart import Cart
 from product.models import Product
+from django.views.decorators.http import require_GET, require_POST, require_safe
 
+@require_safe
 def add_to_cart(request, product_id):
     cart = Cart(request)
     cart.add(product_id)
