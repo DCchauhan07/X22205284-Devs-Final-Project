@@ -33,7 +33,7 @@
                         
                         <div class="flex justify-between items-center mb-4">
                             <span>{{ order.created_at }}</span>
-                            <span>Total: € {{ order.total }}</span>
+                            <span>Total: $ {{ order.total }}</span>
                         </div>
                         
                         {% for item in order.items.all %}
@@ -46,7 +46,7 @@
                                     <div class="flex justify-between items-center"> 
                                         <a href="#" class="text-lg">{{ item.product.name }}</a>
                                         <p>Quantity: {{ item.quantity }}</p>
-                                        <p class="text-right">Price: € {{ item.product.price }}</p> 
+                                        <p class="text-right">Price: $ {{ item.product.price }}</p> 
                                     </div>
                                 </div>
                             </div>

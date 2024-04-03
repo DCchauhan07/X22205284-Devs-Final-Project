@@ -30,7 +30,7 @@ class Product(models.Model):
         return self.name
 
     def get_display_price(self):
-        return f"€ {self.price / 100}"
+        return f"$ {self.price / 100}"
 
     
     def get_thumbnail(self):

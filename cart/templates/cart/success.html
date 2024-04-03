@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Success{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
+    <div class="w-full lg:w-3/4">
+        <h1 class="mb-5 text-3xl">Success</h1>
+        <p>Your payment was successful. Thank you for your purchase!</p>
+        <p>Order details:</p>
+        <ul>
+            <li>Order ID: {{ order_id }}</li>
+            <li>Total amount: ${{ total_amount }}</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
