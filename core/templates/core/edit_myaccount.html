@@ -10,23 +10,31 @@
         {% csrf_token %}
         
         <div>
-            <label>First Name</label>
-            <input name="first_name" value="{{ request.user.first_name}}" type="text" class="w-full mt-2 py-4 px-6 bg-gray-100 rounded-xl">
+            <label>
+                First name:
+                <input name="first_name" value="{{ request.user.first_name }}" type="text" class="w-full mt-2 py-4 px-6 bg-gray-100 rounded-xl">
+            </label>
         </div>
         
         <div>
-            <label>Last Name</label>
-            <input name="last_name" value="{{ request.user.last_name}}" type="text" class="w-full mt-2 py-4 px-6 bg-gray-100 rounded-xl">
+            <label>
+                Last name:
+                <input name="last_name" value="{{ request.user.last_name }}" type="text" class="w-full mt-2 py-4 px-6 bg-gray-100 rounded-xl">
+            </label>
         </div>
         
         <div>
-            <label>Username</label>
-            <input name="username" value="{{ request.user.username}}" type="text" class="w-full mt-2 py-4 px-6 bg-gray-100 rounded-xl">
+            <label>
+                Username:
+                <input name="username" value="{{ request.user.username }}" type="text" class="w-full mt-2 py-4 px-6 bg-gray-100 rounded-xl">
+            </label>
         </div>
         
         <div>
-            <label>Email</label>
-            <input name="email" value="{{ request.user.email}}" type="text" class="w-full mt-2 py-4 px-6 bg-gray-100 rounded-xl">
+            <label>
+                Email:
+                <input name="email" value="{{ request.user.email }}" type="text" class="w-full mt-2 py-4 px-6 bg-gray-100 rounded-xl">
+            </label>
         </div>
         
         <div>
