@@ -1,7 +1,12 @@
+"""Doctype"""
+#Django imports
 from django.urls import path
-from core.views import frontpage, shop, signup, myaccount, edit_myaccount
-from product.views import product
 from django.contrib.auth import views
+
+#First-party imports
+from core.views import frontpage, shop, signup, myaccount, edit_myaccount, about
+from product.views import product
+
 
 urlpatterns = [
     path('', frontpage, name='frontpage'),
@@ -9,6 +14,7 @@ urlpatterns = [
     path('logout/', views.LogoutView.as_view(), name='logout'),
     path('login/', views.LoginView.as_view(template_name='core/login.html'), name='login'),
     path('myaccount/', myaccount, name='myaccount'),
+    path('about/', about, name='about'),
     path('myaccount/edit', edit_myaccount, name='edit_myaccount'),
     path('shop/', shop, name='shop'),
     path('shop/<slug:slug>/', product, name='product'),

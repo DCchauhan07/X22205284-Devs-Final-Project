@@ -18,7 +18,7 @@
                         <a href="{% url 'shop' %}" class="px-6 py-3 text-lg font-semibold bg-red-700 text-white rounded-xl hover:bg-red-700">Shop</a>
                     </li>
                     <li>
-                        <a href="#" class="px-6 py-3 text-lg font-semibold bg-blue-700 text-white rounded-xl hover:bg-blue-700">About</a>
+                        <a href="{% url 'about' %}" class="px-6 py-3 text-lg font-semibold bg-blue-700 text-white rounded-xl hover:bg-blue-700">About</a>
                     </li>
                 </ul>
             </div>
@@ -31,6 +31,7 @@
                 </a>
                 
                 <div
+                   
                      hx-get="{% url 'hx_menu_cart' %}"
                      hx-trigger="update-menu-cart from:body"
                      hx-swap="innerHTML"

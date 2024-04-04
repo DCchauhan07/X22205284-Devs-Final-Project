@@ -1,3 +1,3 @@
-from django.test import TestCase
-
-# Create your tests here.
+"""Doctype"""
+# This file is intentionally left empty.
+# core models test case can be added here if needed.
