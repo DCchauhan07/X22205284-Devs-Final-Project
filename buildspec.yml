@@ -7,6 +7,7 @@ phases:
     commands:
       - pip install --upgrade pip
       - pip install -r requirements.txt pylint
+      - pip install pylint 
 
   pre_build:
     commands:
