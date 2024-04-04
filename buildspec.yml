@@ -16,10 +16,6 @@ phases:
       - pylint $CODEBUILD_SRC_DIR/Stark/*.py
       - pylint --disable=R0903,E1101 $CODEBUILD_SRC_DIR/core/*.py
 
-post_build:
-    commands:
-      - echo "Build completed successfully!"
-
 artifacts:
   files:
     - '**/*'
