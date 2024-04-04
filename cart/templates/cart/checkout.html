@@ -17,20 +17,28 @@
                         </label>
                     </div>
                     <div class="w-full lg:w-1/2 mb-4">
-                        <label class="block mb-1">Last name</label>
-                        <input name="last_name" type="text" class="w-full py-3 rounded-md border border-gray-300" value="{{ request.user.last_name }}">
+                        <label>
+                            Last name:
+                            <input name="last_name" type="text" class="w-full py-3 rounded-md border border-gray-300" value="{{ request.user.last_name }}">
+                        </label>
                     </div>
                     <div class="w-full lg:w-1/2 mb-4">
-                        <label class="block mb-1">Address</label>
-                        <input name="address" type="text" class="w-full py-3 rounded-md border border-gray-300">
+                        <label>
+                            Address:
+                            <input name="address" type="text" class="w-full py-3 rounded-md border border-gray-300">
+                        </label>
                     </div>
                     <div class="w-full lg:w-1/2 mb-4">
-                        <label class="block mb-1">Zipcode</label>
-                        <input name="zipcode" type="text" class="w-full py-3 rounded-md border border-gray-300">
+                        <label>
+                            Zipcode:
+                            <input name="zipcode" type="text" class="w-full py-3 rounded-md border border-gray-300">
+                        </label>
                     </div>
                     <div class="w-full lg:w-1/2 mb-4">
-                        <label class="block mb-1">City/Place</label>
-                        <input name="place" type="text" class="w-full py-3 rounded-md border border-gray-300">
+                        <label>
+                            City/Place:
+                            <input name="place" type="text" class="w-full py-3 rounded-md border border-gray-300">
+                        </label>
                     </div>
                 </div>
             </div>
@@ -39,13 +47,17 @@
                 <h2 class="mb-5 uppercase text-lg">Contact information</h2>
                     
                 <div class="mb-4">
-                    <label class="block mb-2">Email</label>
-                    <input name="email" type="email" class="w-full py-3 rounded-md border border-gray-300" value="{{ request.user.email }}">
+                    <label>
+                        Email:
+                        <input name="email" type="text" class="w-full py-3 rounded-md border border-gray-300" value="{{ request.user.email }}">
+                    </label>
                 </div>
                     
                 <div class="mb-4">
-                    <label class="block mb-2">Phone</label>
-                    <input name="phone" type="phone" class="w-full py-3 rounded-md border border-gray-300">
+                    <label>
+                        Phone:
+                        <input name="phone" type="text" class="w-full py-3 rounded-md border border-gray-300">
+                    </label>
                 </div>
             </div>
                 
