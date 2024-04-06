@@ -29,6 +29,7 @@ def get_products(category_slug=None, query=None):
         products = products.filter(Q(name__icontains=query) | Q(description__icontains=query))
 
     return products
+    
 
 
 def frontpage(request):
